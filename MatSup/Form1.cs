@@ -84,5 +84,14 @@ namespace MatSup
         {
           
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (!mostrarPasosBox.Checked)
+            {
+                PolinomioView polView = new PolinomioView();
+                polView.Show();
+            }
+        }
     }
 }

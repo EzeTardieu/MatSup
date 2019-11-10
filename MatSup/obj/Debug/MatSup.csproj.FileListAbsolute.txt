@@ -18,3 +18,4 @@ C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.csproj.CoreC
 C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.exe
 C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.pdb
 C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.Form1.resources
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.PolinomioView.resources
