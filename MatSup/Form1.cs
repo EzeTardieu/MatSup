@@ -12,6 +12,7 @@ namespace MatSup
 {
     public partial class Form1 : Form
     {
+        int indiceTablaPuntos = 1;
         public Form1()
         {
             InitializeComponent();
@@ -20,9 +21,36 @@ namespace MatSup
         private void Calcular_Click(object sender, EventArgs e)
         {
             float x, y;
-            
-                List<float> floatList = new List<float>();
-            
+            bool agregable = true; 
+
+
+            if(puntoX.Text.Any(c => !char.IsNumber(c) && c != '.'))
+            {
+                MessageBox.Show("Error: X tiene caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
+                agregable = false;
+            }
+            if (puntoY.Text.Any(c => !char.IsNumber(c) && c != '.'))
+            {
+                MessageBox.Show("Error: Y tiene caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
+                agregable = false;
+            }
+            if (puntoX.Text == "" || puntoY.Text == "")
+            {
+                MessageBox.Show("Error: Falta completar alguna coordenada del punto", "Error al agregar punto", MessageBoxButtons.OK);
+                agregable = false;
+            }
+            if (agregable)
+            {
+
+                x = float.Parse(puntoX.Text);
+                y = float.Parse(puntoY.Text);
+                tablaPuntos.Controls.Add(new Label { Text = puntoX.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 0, indiceTablaPuntos);
+                tablaPuntos.Controls.Add(new Label { Text = puntoY.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 1, indiceTablaPuntos);
+                indiceTablaPuntos++;
+                puntoX.Text = "";
+                puntoY.Text = "";
+            }
+
 
         }
 
@@ -31,6 +59,24 @@ namespace MatSup
             
         }
 
-        
+        private void PuntoX_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PuntoY_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

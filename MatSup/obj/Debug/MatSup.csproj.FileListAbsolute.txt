@@ -8,3 +8,13 @@ C:\Users\Ezequiel\Documents\MatSup\MatSup\MatSup\obj\Debug\MatSup.csproj.Generat
 C:\Users\Ezequiel\Documents\MatSup\MatSup\MatSup\obj\Debug\MatSup.csproj.CoreCompileInputs.cache
 C:\Users\Ezequiel\Documents\MatSup\MatSup\MatSup\obj\Debug\MatSup.exe
 C:\Users\Ezequiel\Documents\MatSup\MatSup\MatSup\obj\Debug\MatSup.pdb
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\bin\Debug\MatSup.exe.config
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\bin\Debug\MatSup.exe
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\bin\Debug\MatSup.pdb
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.csprojAssemblyReference.cache
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.Form1.resources
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.Properties.Resources.resources
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.csproj.GenerateResource.cache
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.csproj.CoreCompileInputs.cache
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.exe
+C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.pdb
