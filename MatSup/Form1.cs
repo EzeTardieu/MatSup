@@ -49,6 +49,7 @@ namespace MatSup
                 indiceTablaPuntos++;
                 puntoX.Text = "";
                 puntoY.Text = "";
+                
             }
 
 
@@ -77,6 +78,11 @@ namespace MatSup
         private void PuntoY_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }
