@@ -12,9 +12,22 @@ namespace MatSup
 {
     public partial class PolinomioView : Form
     {
-        public PolinomioView()
+        private Polinomio polinomioInterpolante;
+        public PolinomioView(polInterpolante)
         {
+            polinomioInterpolante = polInterpolante;
             InitializeComponent();
+            polinomioLbl.Text = polinomioInterpolante.formatear();
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.polinomioLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -43,6 +44,7 @@
             this.label1.Size = new System.Drawing.Size(104, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Polinomio: ";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // label2
             // 
@@ -73,11 +75,21 @@
             this.button1.Text = "Especializar";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // polinomioLbl
+            // 
+            this.polinomioLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.polinomioLbl.Location = new System.Drawing.Point(153, 29);
+            this.polinomioLbl.Name = "polinomioLbl";
+            this.polinomioLbl.Size = new System.Drawing.Size(259, 24);
+            this.polinomioLbl.TabIndex = 4;
+            this.polinomioLbl.Click += new System.EventHandler(this.Label3_Click);
+            // 
             // PolinomioView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 228);
+            this.Controls.Add(this.polinomioLbl);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label polinomioLbl;
     }
 }

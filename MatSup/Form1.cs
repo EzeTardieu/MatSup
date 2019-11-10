@@ -13,6 +13,7 @@ namespace MatSup
     public partial class Form1 : Form
     {
         int indiceTablaPuntos = 1;
+        Interpolador interpolador = new Interpolador();
         public Form1()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace MatSup
                 indiceTablaPuntos++;
                 puntoX.Text = "";
                 puntoY.Text = "";
-                
+                interpolador.agregarPunto(x,y);
             }
 
 
@@ -82,15 +83,32 @@ namespace MatSup
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            switch(metodos.Text)
+            {
+                case "Lagrange":
+                    interpolador.setMetodo(new Lagrange());        
+                    break;
+
+                case "Newton Gregory progresivo":
+                    interpolador.setMetodo(new NewtonGregory(new Progresivo()));
+                    break;
+                case "Newton Gregory regresivo":
+                    interpolador.setMetodo(new NewtonGregory(new Regresivo()));
+                    break;
+
+
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+
             if (!mostrarPasosBox.Checked)
             {
-                PolinomioView polView = new PolinomioView();
+                Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
+                PolinomioView polView = new PolinomioView(polInterpolante);
                 polView.Show();
+
             }
         }
     }
