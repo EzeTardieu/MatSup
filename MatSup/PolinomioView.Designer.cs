@@ -30,9 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.valueBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.polinomioLbl = new System.Windows.Forms.Label();
+            this.polK = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -56,13 +57,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Especializar a valor: ";
             // 
-            // textBox1
+            // valueBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(219, 94);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(42, 29);
-            this.textBox1.TabIndex = 2;
+            this.valueBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueBox.Location = new System.Drawing.Point(219, 94);
+            this.valueBox.Name = "valueBox";
+            this.valueBox.Size = new System.Drawing.Size(42, 29);
+            this.valueBox.TabIndex = 2;
+            this.valueBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // button1
             // 
@@ -74,24 +76,37 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Especializar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // polinomioLbl
             // 
+            this.polinomioLbl.AutoSize = true;
             this.polinomioLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.polinomioLbl.Location = new System.Drawing.Point(153, 29);
             this.polinomioLbl.Name = "polinomioLbl";
-            this.polinomioLbl.Size = new System.Drawing.Size(259, 24);
+            this.polinomioLbl.Size = new System.Drawing.Size(0, 24);
             this.polinomioLbl.TabIndex = 4;
             this.polinomioLbl.Click += new System.EventHandler(this.Label3_Click);
+            // 
+            // polK
+            // 
+            this.polK.AutoSize = true;
+            this.polK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.polK.Location = new System.Drawing.Point(68, 144);
+            this.polK.Name = "polK";
+            this.polK.Size = new System.Drawing.Size(193, 20);
+            this.polK.TabIndex = 5;
+            this.polK.Text = "Polinomio especializado ...";
             // 
             // PolinomioView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 228);
+            this.Controls.Add(this.polK);
             this.Controls.Add(this.polinomioLbl);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.valueBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PolinomioView";
@@ -105,8 +120,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox valueBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label polinomioLbl;
+        private System.Windows.Forms.Label polK;
     }
 }
