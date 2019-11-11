@@ -8,11 +8,11 @@ namespace MatSup
 {
 	public class Polinomio
 	{
-		List<float> coeficientes = new List<float>();
+		List<double> coeficientes = new List<double>();
 
 		public Polinomio() { }
 
-		public Polinomio(List<float> valores) {
+		public Polinomio(List<double> valores) {
 			for (int i = 0; i < valores.Count; i++)
 			{
 				coeficientes.Add(valores[i]);
@@ -20,11 +20,11 @@ namespace MatSup
 		}
 
 		public Polinomio Multiplicar(Polinomio polinomio){
-			float a;
-			float b;
-			float c = 0;
+			double a;
+            double b;
+            double c = 0;
 			Polinomio resultado = new Polinomio();
-			List<float> coeficientes2 = polinomio.GetCoeficientes();
+			List<double> coeficientes2 = polinomio.GetCoeficientes();
 			for (int i=0; i < Grado() + polinomio.Grado(); i++){
 			int j = 0;
 			int k = i;
@@ -45,7 +45,7 @@ namespace MatSup
 			return resultado;
 		}
 
-		public List<float> GetCoeficientes(){
+		public List<double> GetCoeficientes(){
 			return coeficientes;
 		}
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CenterSpace.NMath.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MatSup
 {
 	public class Interpolador
 	{
-		private Dictionary<float, float> tablaPuntos = new Dictionary<float, float>();
+		private Dictionary<double, double> tablaPuntos = new Dictionary<double, double>();
 		private Metodo metodo;
 
 		public Interpolador() { }
@@ -21,7 +22,7 @@ namespace MatSup
 			tablaPuntos.Add(x, y);
 		}
 
-		public Polinomio obtenerPolinomioInterpolador() {
+		public Polynomial obtenerPolinomioInterpolador() {
 			return metodo.aplicar(tablaPuntos);
 		}
 

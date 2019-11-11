@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CenterSpace.NMath.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,7 +106,7 @@ namespace MatSup
 
             if (!mostrarPasosBox.Checked)
             {
-                Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
+                Polynomial polInterpolante = interpolador.obtenerPolinomioInterpolador();
                 PolinomioView polView = new PolinomioView(polInterpolante);
                 polView.Show();
 

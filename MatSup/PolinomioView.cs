@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CenterSpace.NMath.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,12 @@ namespace MatSup
 {
     public partial class PolinomioView : Form
     {
-        private Polinomio polinomioInterpolante;
-        public PolinomioView(Polinomio polInterpolante)
+        private Polynomial polinomioInterpolante;
+        public PolinomioView(Polynomial polInterpolante)
         {
             polinomioInterpolante = polInterpolante;
             InitializeComponent();
-            polinomioLbl.Text = polinomioInterpolante.Formatear();
+            polinomioLbl.Text = polinomioInterpolante.ToString();
         }
 
         private void Label1_Click(object sender, EventArgs e)
