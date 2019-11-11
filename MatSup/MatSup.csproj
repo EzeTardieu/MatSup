@@ -53,6 +53,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formula.cs" />
+    <Compile Include="Interpolador.cs" />
+    <Compile Include="Metodo.cs" />
+    <Compile Include="Polinomio.cs" />
     <Compile Include="PolinomioView.cs">
       <SubType>Form</SubType>
     </Compile>
