@@ -1,4 +1,4 @@
-﻿using CenterSpace.NMath.Core;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +38,7 @@ namespace MatSup
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //polK.Text = polinomioInterpolante.Evaluate(double.Parse(valueBox.Text)).ToString();
+            polK.Text = polinomioInterpolante.Evaluar(double.Parse(valueBox.Text)).ToString();
         }
     }
 }

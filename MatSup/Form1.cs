@@ -1,5 +1,4 @@
-﻿using CenterSpace.NMath.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,12 +25,12 @@ namespace MatSup
             bool agregable = true; 
 
 
-            if(puntoX.Text.Any(c => !char.IsNumber(c) && c != '.'))
+            if(puntoX.Text.Any(c => !char.IsNumber(c) && c != '.' && c != '-'))
             {
                 MessageBox.Show("Error: X tiene caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
                 agregable = false;
             }
-            if (puntoY.Text.Any(c => !char.IsNumber(c) && c != '.'))
+            if (puntoY.Text.Any(c => !char.IsNumber(c) && c != '.' && c != '-'))
             {
                 MessageBox.Show("Error: Y tiene caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
                 agregable = false;
@@ -43,15 +42,21 @@ namespace MatSup
             }
             if (agregable)
             {
-
-                x = float.Parse(puntoX.Text);
-                y = float.Parse(puntoY.Text);
-                tablaPuntos.Controls.Add(new Label { Text = puntoX.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 0, indiceTablaPuntos);
-                tablaPuntos.Controls.Add(new Label { Text = puntoY.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 1, indiceTablaPuntos);
-                indiceTablaPuntos++;
-                puntoX.Text = "";
-                puntoY.Text = "";
-                interpolador.agregarPunto(x,y);
+                try
+                {
+                    x = float.Parse(puntoX.Text);
+                    y = float.Parse(puntoY.Text);
+                    tablaPuntos.Controls.Add(new Label { Text = puntoX.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 0, indiceTablaPuntos);
+                    tablaPuntos.Controls.Add(new Label { Text = puntoY.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 1, indiceTablaPuntos);
+                    indiceTablaPuntos++;
+                    puntoX.Text = "";
+                    puntoY.Text = "";
+                    interpolador.agregarPunto(x, y);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
+                }
             }
 
 
@@ -96,21 +101,24 @@ namespace MatSup
                 case "Newton Gregory regresivo":
                     interpolador.setMetodo(new NewtonGregory(new Regresivo()));
                     break;
-
-
             }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
-            if (!mostrarPasosBox.Checked)
+            if(metodos.Text=="")
+                MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
+            else
             {
-				Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
-                PolinomioView polView = new PolinomioView(polInterpolante);
-                polView.Show();
+                if (!mostrarPasosBox.Checked)
+                {
+                    Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
+                    PolinomioView polView = new PolinomioView(polInterpolante);
+                    polView.Show();
 
+                }
             }
+          
         }
     }
 }

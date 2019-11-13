@@ -1,4 +1,4 @@
-﻿using CenterSpace.NMath.Core;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +23,7 @@ namespace MatSup
 		}
 
 		public Polinomio obtenerPolinomioInterpolador() {
-			Polinomio pol1 = new Polinomio();
-			Polinomio pol2 = new Polinomio();
-			pol1.AgregarCoeficiente(3);
-			pol1.AgregarCoeficiente(0);
-			pol1.AgregarCoeficiente(1);
-			pol2.AgregarCoeficiente(1);
-			pol2.AgregarCoeficiente(1);
-			return pol1.Multiplicar(pol2);
+            return metodo.aplicar(tablaPuntos);
 		}
 
 	}

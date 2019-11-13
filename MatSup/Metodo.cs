@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CenterSpace.NMath.Core;
+
 
 
 namespace MatSup
@@ -16,47 +16,52 @@ namespace MatSup
         
         public Polinomio aplicar(Dictionary<double, double> tablaValores)
 		{
-			/*
-            int grado = tablaValores.Count()-1;
-            double[] xs = tablaValores.Keys.ToArray();
-            double[] ys = tablaValores.Values.ToArray();
+            int grado = tablaValores.Count() - 1;
+            List<double> xs = tablaValores.Keys.ToList();
+            List<double> ys = tablaValores.Values.ToList();
+
             
-            DoubleVector cerosMath = new DoubleVector(tablaValores.Count(),0);
             int n = tablaValores.Count();
-            List<Polynomial> ls = new List<Polynomial>();
+            List<Polinomio> ls = new List<Polinomio>();
             int a = 0;
-            foreach(var raiz in xs)
+            foreach (var raiz in xs)
             {
-                var xsNew = xs.Where(x => x != raiz).ToArray();
-                var xsMath = new DoubleVector(xsNew);
-                var pol = new Polynomial(new DoubleVector(new double[] { 1}));
-                foreach(var raizNew in xsNew)
+                var xsNew = xs.Where(x => x != raiz).ToList();
+                
+                var pol = new Polinomio();
+                pol.coeficientes.Add(1);
+                foreach (var raizNew in xsNew)
                 {
-                    pol *= new Polynomial(new DoubleVector(new double[] { -raizNew, 1 }));
+                    List<double> coefAux = new List<double>();
+                    coefAux.Add(-raizNew);
+                    coefAux.Add(1);
+                    pol = pol.Multiplicar(new Polinomio(coefAux));
                 }
                 double denominador = 1;
                 foreach (var raizNew in xsNew)
                 {
                     denominador *= (xs.First(x => x == raiz) - raizNew);
                 }
-                pol /= denominador;
+                pol = pol.DividirEscalar(denominador);
                 Console.WriteLine("Lsub" + a + "es: " + pol.ToString());
                 a++;
-                ls.Add(pol);   
+                ls.Add(pol);
             }
             int y = 0;
-            Polynomial polInterpolante = new Polynomial();
-            foreach(var imagen in ys)
+
+            Polinomio polInterpolante = new Polinomio();
+            
+            foreach (var imagen in ys)
             {
-                polInterpolante += (imagen * ls[y]);
+                Polinomio polAux = ls[y].MultiplicarEscalar(imagen);
+                polInterpolante = polInterpolante.Sumar(polAux);
                 y++;
             }
             Console.WriteLine("Polinomio interpolante: " + polInterpolante);
             return polInterpolante;
-			*/
-			return new Polinomio();
-		}
+        }
 
+    
 
 	}
 
@@ -70,8 +75,9 @@ namespace MatSup
 
 		public Polinomio aplicar(Dictionary<double, double> tablaValores)
 		{
+            /*
             Polynomial pol = new Polynomial(new DoubleVector(new double[] { -2 ,1}));
-            Console.WriteLine("el polinomio es: " + pol.ToString());
+            Console.WriteLine("el polinomio es: " + pol.ToString());*/
             return null;
 		}
 	}

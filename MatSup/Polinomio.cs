@@ -8,9 +8,12 @@ namespace MatSup
 {
 	public class Polinomio
 	{
-		List<double> coeficientes = new List<double>();
+		public List<double> coeficientes = new List<double>();
 
-		public Polinomio() { }
+		public Polinomio()
+        {
+            
+        }
 
 		public Polinomio(List<double> valores) {
 			for (int i = 0; i < valores.Count; i++)
@@ -51,21 +54,19 @@ namespace MatSup
 
 		public Polinomio Sumar(Polinomio polinomio)
 		{
-			Polinomio resultado = new Polinomio();
+			
+            List<double> coefRes = new List<double>();
+            if (this.coeficientes.Count == 0)
+                return polinomio;
 
-			for (int i = 0; i < Grado() - 1; i++) {
-				resultado.AgregarCoeficiente(coeficientes[i]);
-			}
-
-			for (int i = 0; i < Grado() - 1; i++)
-			{
-				if (i < resultado.GetCoeficientes().Count)
-					resultado.GetCoeficientes()[i] += polinomio.GetCoeficientes()[i];
-				else
-					resultado.AgregarCoeficiente(polinomio.GetCoeficientes()[i]);
-			}
-
-			return resultado;
+            int pos = 0;
+    		foreach(var coef in polinomio.coeficientes)
+            {
+                coefRes.Add(coef + this.coeficientes.ElementAt(pos));
+                pos++;
+            }
+            Polinomio resultado = new Polinomio(coefRes);
+            return resultado;
 		}
 
 		public List<double> GetCoeficientes(){
@@ -76,11 +77,14 @@ namespace MatSup
 			String formateado = "";
 			for (int i=0; i<coeficientes.Count; i++) {
 				if (coeficientes[i] != 0)
-					formateado += coeficientes[i];
-				if (i != 0)
-					formateado += "X^" + i;
-				if (i != coeficientes.Count - 1)
-					formateado += " + ";
+                {
+                    formateado += coeficientes[i];
+                    if (i != 0)
+                        formateado += "X^" + i;
+                    if (i != coeficientes.Count - 1)
+                        formateado += " + ";
+                }
+					
 			}
 			return formateado;
 		}
@@ -92,5 +96,15 @@ namespace MatSup
 		public int Grado() {
 			return coeficientes.Count;
 		}
+        public double Evaluar(double k)
+        {
+            double resultado = 0;
+            for(int i = 0; i < coeficientes.Count; i++)
+            {
+                resultado += coeficientes[i] * (Math.Pow(k, i));
+                
+            }
+            return resultado;
+        }
 	}
 }
