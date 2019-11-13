@@ -13,12 +13,12 @@ namespace MatSup
 {
     public partial class PolinomioView : Form
     {
-        private Polynomial polinomioInterpolante;
-        public PolinomioView(Polynomial polInterpolante)
+        private Polinomio polinomioInterpolante;
+        public PolinomioView(Polinomio polInterpolante)
         {
             polinomioInterpolante = polInterpolante;
             InitializeComponent();
-            polinomioLbl.Text = polinomioInterpolante.ToString();
+            polinomioLbl.Text = polinomioInterpolante.Formatear();
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace MatSup
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            polK.Text = polinomioInterpolante.Evaluate(double.Parse(valueBox.Text)).ToString();
+            //polK.Text = polinomioInterpolante.Evaluate(double.Parse(valueBox.Text)).ToString();
         }
     }
 }

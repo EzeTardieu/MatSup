@@ -20,28 +20,51 @@ namespace MatSup
 		}
 
 		public Polinomio Multiplicar(Polinomio polinomio){
-			double a;
-            double b;
-            double c = 0;
-			Polinomio resultado = new Polinomio();
+			List<double> coeficientes1 = coeficientes;
 			List<double> coeficientes2 = polinomio.GetCoeficientes();
-			for (int i=0; i < Grado() + polinomio.Grado(); i++){
-			int j = 0;
-			int k = i;
-				while (k >=0 && j <= i){
-					Console.WriteLine("El coeficiente a" + j +" es igual a ");
-					a = (j < Grado() + 1) ? coeficientes[j] : 0f;
-					Console.WriteLine(a);
-					Console.WriteLine("El coeficiente b" + k +" es igual a ");
-					b = (k < polinomio.Grado() + 1)? coeficientes2[k]: 0f;
-                    Console.WriteLine(b);
-					c += a*b;
-					Console.WriteLine("El coeficiente c es la multiplicacion de a" + j + " y b" + k + " = " + c);
-					j++;
-					k--;
-                }
-				coeficientes.Add(c);
+
+			List<double> coeficientesProducto = new List<double>();
+
+			for (int i = 0; i < Grado() + polinomio.Grado() - 1; i++)
+				coeficientesProducto.Add(0);
+
+			for (int i = 0; i < Grado(); i++)
+			{
+				for (int j = 0; j < polinomio.Grado(); j++)
+					coeficientesProducto[i + j] += coeficientes1[i] * coeficientes2[j];
 			}
+
+			for (int i = 0; i < Grado() + polinomio.Grado() - 1; i++)
+				Console.WriteLine(coeficientesProducto[i]);
+
+			return new Polinomio(coeficientesProducto);
+		}
+
+		public Polinomio DividirEscalar(double denominador) {
+			return new Polinomio(coeficientes.ConvertAll(numerador => numerador / denominador));
+		}
+
+		public Polinomio MultiplicarEscalar(double escalar)
+		{
+			return new Polinomio(coeficientes.ConvertAll(numerador => numerador * escalar));
+		}
+
+		public Polinomio Sumar(Polinomio polinomio)
+		{
+			Polinomio resultado = new Polinomio();
+
+			for (int i = 0; i < Grado() - 1; i++) {
+				resultado.AgregarCoeficiente(coeficientes[i]);
+			}
+
+			for (int i = 0; i < Grado() - 1; i++)
+			{
+				if (i < resultado.GetCoeficientes().Count)
+					resultado.GetCoeficientes()[i] += polinomio.GetCoeficientes()[i];
+				else
+					resultado.AgregarCoeficiente(polinomio.GetCoeficientes()[i]);
+			}
+
 			return resultado;
 		}
 
@@ -49,23 +72,25 @@ namespace MatSup
 			return coeficientes;
 		}
 
-
-
 		public string Formatear(){
 			String formateado = "";
 			for (int i=0; i<coeficientes.Count; i++) {
-				formateado = formateado + coeficientes[i] + "X^" + i + " + ";
+				if (coeficientes[i] != 0)
+					formateado += coeficientes[i];
+				if (i != 0)
+					formateado += "X^" + i;
+				if (i != coeficientes.Count - 1)
+					formateado += " + ";
 			}
-			formateado.Remove(formateado.Length - 2);
 			return formateado;
 		}
 
-		public void AgregarCoeficiente(float nuevoCoeficiente) {
+		public void AgregarCoeficiente(double nuevoCoeficiente) {
 			coeficientes.Add(nuevoCoeficiente);
 		}
 
 		public int Grado() {
-			return coeficientes.Count - 1;
+			return coeficientes.Count;
 		}
 	}
 }

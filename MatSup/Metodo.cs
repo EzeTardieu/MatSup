@@ -8,14 +8,15 @@ namespace MatSup
 {
     public interface Metodo
 	{
-        Polynomial aplicar(Dictionary<double, double> tablaValores);
+		Polinomio aplicar(Dictionary<double, double> tablaValores);
 	}
 
 	public class Lagrange : Metodo
 	{
         
-        public Polynomial aplicar(Dictionary<double, double> tablaValores)
+        public Polinomio aplicar(Dictionary<double, double> tablaValores)
 		{
+			/*
             int grado = tablaValores.Count()-1;
             double[] xs = tablaValores.Keys.ToArray();
             double[] ys = tablaValores.Values.ToArray();
@@ -52,6 +53,8 @@ namespace MatSup
             }
             Console.WriteLine("Polinomio interpolante: " + polInterpolante);
             return polInterpolante;
+			*/
+			return new Polinomio();
 		}
 
 
@@ -65,18 +68,8 @@ namespace MatSup
 			formula = _formula;
 		}
 
-		public Polynomial aplicar(Dictionary<double, double> tablaValores)
+		public Polinomio aplicar(Dictionary<double, double> tablaValores)
 		{
-            /*
-			Polinomio polinomio = new Polinomio();
-			Polinomio polinomio2 = new Polinomio();
-			polinomio.AgregarCoeficiente(1);
-			polinomio.AgregarCoeficiente(1);
-			polinomio2.AgregarCoeficiente(1);
-			polinomio2.AgregarCoeficiente(1);
-			return polinomio.Multiplicar(polinomio2);
-			//return formula.aplicar(tablaValores);
-            */
             Polynomial pol = new Polynomial(new DoubleVector(new double[] { -2 ,1}));
             Console.WriteLine("el polinomio es: " + pol.ToString());
             return null;

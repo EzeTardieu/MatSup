@@ -22,8 +22,15 @@ namespace MatSup
 			tablaPuntos.Add(x, y);
 		}
 
-		public Polynomial obtenerPolinomioInterpolador() {
-			return metodo.aplicar(tablaPuntos);
+		public Polinomio obtenerPolinomioInterpolador() {
+			Polinomio pol1 = new Polinomio();
+			Polinomio pol2 = new Polinomio();
+			pol1.AgregarCoeficiente(3);
+			pol1.AgregarCoeficiente(0);
+			pol1.AgregarCoeficiente(1);
+			pol2.AgregarCoeficiente(1);
+			pol2.AgregarCoeficiente(1);
+			return pol1.Multiplicar(pol2);
 		}
 
 	}

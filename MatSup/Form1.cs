@@ -106,7 +106,7 @@ namespace MatSup
 
             if (!mostrarPasosBox.Checked)
             {
-                Polynomial polInterpolante = interpolador.obtenerPolinomioInterpolador();
+				Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
                 PolinomioView polView = new PolinomioView(polInterpolante);
                 polView.Show();
 
