@@ -25,12 +25,12 @@ namespace MatSup
             bool agregable = true; 
 
 
-            if(puntoX.Text.Any(c => !char.IsNumber(c) && c != '.' && c != '-'))
+            if(puntoX.Text.Any(c => !char.IsNumber(c) && c != ',' && c != '-'))
             {
                 MessageBox.Show("Error: X tiene caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
                 agregable = false;
             }
-            if (puntoY.Text.Any(c => !char.IsNumber(c) && c != '.' && c != '-'))
+            if (puntoY.Text.Any(c => !char.IsNumber(c) && c != ',' && c != '-'))
             {
                 MessageBox.Show("Error: Y tiene caracter inválido", "Error al agregar punto", MessageBoxButtons.OK);
                 agregable = false;
@@ -110,13 +110,11 @@ namespace MatSup
                 MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
             else
             {
-                if (!mostrarPasosBox.Checked)
-                {
-                    Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
-                    PolinomioView polView = new PolinomioView(polInterpolante);
-                    polView.Show();
+                Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
+                PolinomioView polView = new PolinomioView(polInterpolante, mostrarPasosBox.Checked);
+                polView.Show();
+                
 
-                }
             }
           
         }

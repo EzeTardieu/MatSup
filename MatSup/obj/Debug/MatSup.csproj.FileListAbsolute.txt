@@ -40,7 +40,6 @@ C:\Users\Ezequiel\Documents\matsuptp\MatSup\MatSup\obj\Debug\MatSup.csproj.CopyC
 C:\Users\Ezequiel\Documents\MatSup\MatSup\bin\Debug\MatSup.exe.config
 C:\Users\Ezequiel\Documents\MatSup\MatSup\bin\Debug\MatSup.exe
 C:\Users\Ezequiel\Documents\MatSup\MatSup\bin\Debug\MatSup.pdb
-C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.csprojAssemblyReference.cache
 C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.Form1.resources
 C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.PolinomioView.resources
 C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.Properties.Resources.resources
@@ -64,3 +63,4 @@ C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.CopyComplete
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.exe
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.pdb
+C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.PasosLagrange.resources

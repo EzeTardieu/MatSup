@@ -34,6 +34,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.polinomioLbl = new System.Windows.Forms.Label();
             this.polK = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.gradolbl = new System.Windows.Forms.Label();
+            this.gradolblresultado = new System.Windows.Forms.Label();
+            this.pasosLagrange1 = new MatSup.PasosLagrange();
+            this.equiespaciadoslbl = new System.Windows.Forms.Label();
+            this.equiespaciadoslblresultado = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -98,11 +104,67 @@
             this.polK.TabIndex = 5;
             this.polK.Text = "Polinomio especializado ...";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
+            // 
+            // gradolbl
+            // 
+            this.gradolbl.AutoSize = true;
+            this.gradolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gradolbl.Location = new System.Drawing.Point(43, 293);
+            this.gradolbl.Name = "gradolbl";
+            this.gradolbl.Size = new System.Drawing.Size(72, 24);
+            this.gradolbl.TabIndex = 7;
+            this.gradolbl.Text = "Grado: ";
+            // 
+            // gradolblresultado
+            // 
+            this.gradolblresultado.AutoSize = true;
+            this.gradolblresultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gradolblresultado.Location = new System.Drawing.Point(121, 293);
+            this.gradolblresultado.Name = "gradolblresultado";
+            this.gradolblresultado.Size = new System.Drawing.Size(0, 24);
+            this.gradolblresultado.TabIndex = 8;
+            // 
+            // pasosLagrange1
+            // 
+            this.pasosLagrange1.AutoSize = true;
+            this.pasosLagrange1.Location = new System.Drawing.Point(399, 96);
+            this.pasosLagrange1.Name = "pasosLagrange1";
+            this.pasosLagrange1.Size = new System.Drawing.Size(356, 400);
+            this.pasosLagrange1.TabIndex = 6;
+            this.pasosLagrange1.Load += new System.EventHandler(this.PasosLagrange1_Load);
+            // 
+            // equiespaciadoslbl
+            // 
+            this.equiespaciadoslbl.AutoSize = true;
+            this.equiespaciadoslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equiespaciadoslbl.Location = new System.Drawing.Point(43, 358);
+            this.equiespaciadoslbl.Name = "equiespaciadoslbl";
+            this.equiespaciadoslbl.Size = new System.Drawing.Size(150, 24);
+            this.equiespaciadoslbl.TabIndex = 9;
+            this.equiespaciadoslbl.Text = "Equiespaciados:";
+            // 
+            // equiespaciadoslblresultado
+            // 
+            this.equiespaciadoslblresultado.AutoSize = true;
+            this.equiespaciadoslblresultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equiespaciadoslblresultado.Location = new System.Drawing.Point(199, 358);
+            this.equiespaciadoslblresultado.Name = "equiespaciadoslblresultado";
+            this.equiespaciadoslblresultado.Size = new System.Drawing.Size(0, 24);
+            this.equiespaciadoslblresultado.TabIndex = 10;
+            // 
             // PolinomioView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 228);
+            this.ClientSize = new System.Drawing.Size(1005, 552);
+            this.Controls.Add(this.equiespaciadoslblresultado);
+            this.Controls.Add(this.equiespaciadoslbl);
+            this.Controls.Add(this.gradolblresultado);
+            this.Controls.Add(this.gradolbl);
+            this.Controls.Add(this.pasosLagrange1);
             this.Controls.Add(this.polK);
             this.Controls.Add(this.polinomioLbl);
             this.Controls.Add(this.button1);
@@ -111,6 +173,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PolinomioView";
             this.Text = "PolinomioView";
+            this.Load += new System.EventHandler(this.PolinomioView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +187,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label polinomioLbl;
         private System.Windows.Forms.Label polK;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private PasosLagrange pasosLagrange1;
+        private System.Windows.Forms.Label gradolbl;
+        private System.Windows.Forms.Label gradolblresultado;
+        private System.Windows.Forms.Label equiespaciadoslbl;
+        private System.Windows.Forms.Label equiespaciadoslblresultado;
     }
 }

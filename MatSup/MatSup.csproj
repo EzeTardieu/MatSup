@@ -58,6 +58,12 @@
     <Compile Include="Formula.cs" />
     <Compile Include="Interpolador.cs" />
     <Compile Include="Metodo.cs" />
+    <Compile Include="PasosLagrange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PasosLagrange.Designer.cs">
+      <DependentUpon>PasosLagrange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Polinomio.cs" />
     <Compile Include="PolinomioView.cs">
       <SubType>Form</SubType>
@@ -69,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasosLagrange.resx">
+      <DependentUpon>PasosLagrange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PolinomioView.resx">
       <DependentUpon>PolinomioView.cs</DependentUpon>

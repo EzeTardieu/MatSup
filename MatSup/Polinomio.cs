@@ -56,7 +56,7 @@ namespace MatSup
 		{
 			
             List<double> coefRes = new List<double>();
-            if (this.coeficientes.Count == 0)
+            if (this.coeficientes.Count != polinomio.coeficientes.Count)
                 return polinomio;
 
             int pos = 0;
@@ -93,9 +93,19 @@ namespace MatSup
 			coeficientes.Add(nuevoCoeficiente);
 		}
 
-		public int Grado() {
+		public int Grado() {// cuenta los cero, no funciona
 			return coeficientes.Count;
 		}
+        public int getGrado()
+        {
+            int grado;
+            for(int i = coeficientes.Count-1; i > 0; i--)
+            {
+                if(coeficientes[i]!=0)
+                return i;
+            }
+            return 0;
+        }
         public double Evaluar(double k)
         {
             double resultado = 0;

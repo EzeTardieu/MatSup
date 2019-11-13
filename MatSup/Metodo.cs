@@ -13,16 +13,19 @@ namespace MatSup
 
 	public class Lagrange : Metodo
 	{
-        
+        public static List<Polinomio> ls;
+        List<double> xs;
+        List<double> ys;
         public Polinomio aplicar(Dictionary<double, double> tablaValores)
 		{
+            reset();
             int grado = tablaValores.Count() - 1;
-            List<double> xs = tablaValores.Keys.ToList();
-            List<double> ys = tablaValores.Values.ToList();
+            xs = tablaValores.Keys.ToList();
+            ys = tablaValores.Values.ToList();
+            ls = new List<Polinomio>();
 
-            
             int n = tablaValores.Count();
-            List<Polinomio> ls = new List<Polinomio>();
+            
             int a = 0;
             foreach (var raiz in xs)
             {
@@ -60,8 +63,16 @@ namespace MatSup
             Console.WriteLine("Polinomio interpolante: " + polInterpolante);
             return polInterpolante;
         }
-
-    
+        public List<Polinomio> getLs()
+        {
+            return ls;
+        }
+        public void reset()
+        {
+            ls = null;
+            xs = null;
+            ys = null;
+        }
 
 	}
 
