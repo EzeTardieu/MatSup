@@ -55,8 +55,6 @@ namespace MatSup
 		public Polinomio Sumar(Polinomio polinomio)
 		{
             Polinomio resultado = new Polinomio();
-            Console.WriteLine("this:" + this.Formatear());
-            Console.WriteLine("polinomio:" + polinomio.Formatear());
             for (int i = 0; i < Grado() ; i++)
             {
                 resultado.AgregarCoeficiente(coeficientes[i]);
@@ -69,23 +67,7 @@ namespace MatSup
                 else
                     resultado.AgregarCoeficiente(polinomio.GetCoeficientes()[i]);
             }
-            Console.WriteLine("Resultado:"+resultado.Formatear());
             return resultado;
-
-            /*
-            List<double> coefRes = new List<double>();
-            if (this.coeficientes.Count != polinomio.coeficientes.Count)
-                return polinomio;
-
-            int pos = 0;
-    		foreach(var coef in polinomio.coeficientes)
-            {
-                coefRes.Add(coef + this.coeficientes.ElementAt(pos));
-                pos++;
-            }
-            Polinomio resultado = new Polinomio(coefRes);
-            return resultado;
-            */
         }
 
         public List<double> GetCoeficientes(){

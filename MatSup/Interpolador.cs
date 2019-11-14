@@ -25,16 +25,16 @@ namespace MatSup
 		public Polinomio obtenerPolinomioInterpolador() {
             return metodo.aplicar(tablaPuntos);
 		}
-        public static bool equiespaciados()
+        public string Equiespaciados()
         {
-            bool respuesta = true;
+            String respuesta = "No";
             List<double> listaOrdenada = tablaPuntos.Keys.ToList().OrderBy(i => i).ToList();
             for(int i = 0; i < tablaPuntos.Count()-2; i++)
             {
-                if (listaOrdenada[i + 1] - listaOrdenada[i] == listaOrdenada[i + 2] - listaOrdenada[i + 1])
-                    respuesta = true;
-                else
-                    return false;
+				if (listaOrdenada[i + 1] - listaOrdenada[i] == listaOrdenada[i + 2] - listaOrdenada[i + 1])
+					respuesta = "Si";
+				else
+					return "No";
             }
             return respuesta;
         }

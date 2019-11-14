@@ -14,7 +14,9 @@ namespace MatSup
     {
         int indiceTablaPuntos = 1;
         Interpolador interpolador = new Interpolador();
-        public Form1()
+		Polinomio polInterpolante;
+
+		public Form1()
         {
             InitializeComponent();
         }
@@ -94,7 +96,6 @@ namespace MatSup
                 case "Lagrange":
                     interpolador.setMetodo(new Lagrange());        
                     break;
-
                 case "Newton Gregory progresivo":
                     interpolador.setMetodo(new NewtonGregory(new Progresivo()));
                     break;
@@ -110,13 +111,31 @@ namespace MatSup
                 MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
             else
             {
-                Polinomio polInterpolante = interpolador.obtenerPolinomioInterpolador();
-                PolinomioView polView = new PolinomioView(polInterpolante, mostrarPasosBox.Checked);
-                polView.Show();
-                
-
+                polInterpolante = interpolador.obtenerPolinomioInterpolador();
+				ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
+				if (mostrarPasosBox.Checked) CargarPasos();
+				ContainerGrado.Text = polInterpolante.getGrado().ToString();
+				ContainerEquiespaciados.Text = interpolador.Equiespaciados();
             }
           
         }
-    }
+		public void CargarPasos()
+		{
+			ContainerPasos.Clear();
+			foreach (var paso in interpolador.metodo.obtenerPasos())
+				ContainerPasos.Text += paso + Environment.NewLine;
+		}
+
+		private void ValorAEspecializar_TextChanged(object sender, EventArgs e)
+		{
+			if (Entrada_valida(ValorAEspecializar.Text)) {
+				PolinomioEspecializado.Text = "P(" + ValorAEspecializar.Text + ") =" +
+				polInterpolante.Evaluar(double.Parse(ValorAEspecializar.Text)).ToString();
+			}
+		}
+
+		public bool Entrada_valida(String text) {
+			return text.Length > 0;
+		}
+	}
 }

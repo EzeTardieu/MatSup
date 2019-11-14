@@ -50,17 +50,11 @@ C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.pdb
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\MatSup.exe.config
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\MatSup.exe
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\MatSup.pdb
-C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\Microsoft.Solver.Foundation.dll
-C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\NMathPremium.dll
-C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\Microsoft.Solver.Foundation.xml
-C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\bin\Debug\NMathPremium.xml
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csprojAssemblyReference.cache
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.Form1.resources
-C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.PolinomioView.resources
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.Properties.Resources.resources
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.GenerateResource.cache
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.CoreCompileInputs.cache
-C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.CopyComplete
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.exe
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.pdb
 C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.PasosLagrange.resources

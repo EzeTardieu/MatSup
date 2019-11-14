@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,29 +59,11 @@
     <Compile Include="Formula.cs" />
     <Compile Include="Interpolador.cs" />
     <Compile Include="Metodo.cs" />
-    <Compile Include="PasosLagrange.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PasosLagrange.Designer.cs">
-      <DependentUpon>PasosLagrange.cs</DependentUpon>
-    </Compile>
     <Compile Include="Polinomio.cs" />
-    <Compile Include="PolinomioView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PolinomioView.Designer.cs">
-      <DependentUpon>PolinomioView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasosLagrange.resx">
-      <DependentUpon>PasosLagrange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PolinomioView.resx">
-      <DependentUpon>PolinomioView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

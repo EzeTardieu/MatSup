@@ -9,11 +9,13 @@ namespace MatSup
     public interface Metodo
 	{
 		Polinomio aplicar(Dictionary<double, double> tablaValores);
+		List<String> obtenerPasos();
 	}
 
 	public class Lagrange : Metodo
 	{
         public static List<Polinomio> ls;
+		List<String> pasos = new List<string>();
         List<double> xs;
         List<double> ys;
         public Polinomio aplicar(Dictionary<double, double> tablaValores)
@@ -27,10 +29,11 @@ namespace MatSup
             int n = tablaValores.Count();
             
             int a = 0;
-            foreach (var raiz in xs)
+			pasos.Add("Calcular los Li(Xi)");
+			foreach (var raiz in xs)
             {
                 var xsNew = xs.Where(x => x != raiz).ToList();
-                
+
                 var pol = new Polinomio();
                 pol.coeficientes.Add(1);
                 foreach (var raizNew in xsNew)
@@ -46,26 +49,27 @@ namespace MatSup
                     denominador *= (xs.First(x => x == raiz) - raizNew);
                 }
                 pol = pol.DividirEscalar(denominador);
-                Console.WriteLine("Lsub" + a + "es: " + pol.ToString());
                 a++;
                 ls.Add(pol);
+				pasos.Add("L"+ a + "(" + raiz + ") = " + pol.Formatear());
             }
             int y = 0;
 
             Polinomio polInterpolante = new Polinomio();
-            
+
+			pasos.Add("Calcular el polinomio interpolante");
             foreach (var imagen in ys)
             {
                 Polinomio polAux = ls[y].MultiplicarEscalar(imagen);
                 polInterpolante = polInterpolante.Sumar(polAux);
                 y++;
             }
-            //Console.WriteLine("Polinomio interpolante: " + polInterpolante);
+			pasos.Add("P(X)=" + polInterpolante.Formatear());
             return polInterpolante;
         }
-        public List<Polinomio> getLs()
+        public List<String> obtenerPasos()
         {
-            return ls;
+            return pasos;
         }
         public void reset()
         {
@@ -79,7 +83,8 @@ namespace MatSup
 	public class NewtonGregory : Metodo
 	{
 		Formula formula;
-        List<double> xs;
+		List<String> pasos = new List<string>();
+		List<double> xs;
         List<double> ys;
         List<List<double>>fs; 
         public NewtonGregory(Formula _formula) {
@@ -95,10 +100,17 @@ namespace MatSup
             fs.Add(ys);
             calcularF(ys, contadorf);
             Polinomio polInter= formula.retornarPolinomio(fs,xs);
+			pasos.Add("Armamos el polinomio interpolante: ");
+			pasos.AddRange(formula.obtenerPasos());
+			pasos.Add("P(x) = " + polInter.Formatear());
             return polInter;
 
 		}
-        public void reset()
+		public List<String> obtenerPasos()
+		{
+			return pasos;
+		}
+		public void reset()
         {
             fs = null;
             xs = null;
@@ -107,11 +119,12 @@ namespace MatSup
         private void calcularF(List<double> imagenes, int contadorF)
         {
             List<double> f = new List<double>();
+			pasos.Add("Calculamos las diferencias progresivas de orden " + contadorF);
             for (int i = 0; i < imagenes.Count - 1; i++)
             {
                 double aux = (imagenes[i + 1] - imagenes[i]) / (xs[i + contadorF] - xs[i]);
                 f.Add(aux);
-
+				pasos.Add("ΔF" + contadorF +"(" + imagenes[i] + ") = " + aux);
             }
             fs.Add(f);
             contadorF++;
