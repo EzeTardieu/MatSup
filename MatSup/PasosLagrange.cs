@@ -27,12 +27,16 @@ namespace MatSup
             
             this.label1.Text = "Pasos...";
             int indice = 0;
-            foreach(var L in Ls)
+            if (Ls != null)
             {
-                tablaLs.Controls.Add(new Label { Text = "L"+indice.ToString() + "(x)", Anchor = AnchorStyles.Left, AutoSize = true }, 0, indice);
-                tablaLs.Controls.Add(new Label { Text = L.Formatear(), Anchor = AnchorStyles.Left, AutoSize = true }, 1, indice);
-                indice++;
+                foreach (var L in Ls)
+                {
+                    tablaLs.Controls.Add(new Label { Text = "L" + indice.ToString() + "(x)", Anchor = AnchorStyles.Left, AutoSize = true }, 0, indice);
+                    tablaLs.Controls.Add(new Label { Text = L.Formatear(), Anchor = AnchorStyles.Left, AutoSize = true }, 1, indice);
+                    indice++;
+                }
             }
+            
             
         }
     }

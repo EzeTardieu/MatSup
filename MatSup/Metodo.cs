@@ -60,7 +60,7 @@ namespace MatSup
                 polInterpolante = polInterpolante.Sumar(polAux);
                 y++;
             }
-            Console.WriteLine("Polinomio interpolante: " + polInterpolante);
+            //Console.WriteLine("Polinomio interpolante: " + polInterpolante);
             return polInterpolante;
         }
         public List<Polinomio> getLs()
@@ -79,18 +79,46 @@ namespace MatSup
 	public class NewtonGregory : Metodo
 	{
 		Formula formula;
-
-		public NewtonGregory(Formula _formula) {
+        List<double> xs;
+        List<double> ys;
+        List<List<double>>fs; 
+        public NewtonGregory(Formula _formula) {
 			formula = _formula;
 		}
 
 		public Polinomio aplicar(Dictionary<double, double> tablaValores)
 		{
-            /*
-            Polynomial pol = new Polynomial(new DoubleVector(new double[] { -2 ,1}));
-            Console.WriteLine("el polinomio es: " + pol.ToString());*/
-            return null;
+            xs = tablaValores.Keys.ToList();
+            ys = tablaValores.Values.ToList();
+            fs = new List<List<double>>();
+            int contadorf = 1;
+            fs.Add(ys);
+            calcularF(ys, contadorf);
+            Polinomio polInter= formula.retornarPolinomio(fs,xs);
+            return polInter;
+
 		}
-	}
+        public void reset()
+        {
+            fs = null;
+            xs = null;
+            ys = null;
+        }
+        private void calcularF(List<double> imagenes, int contadorF)
+        {
+            List<double> f = new List<double>();
+            for (int i = 0; i < imagenes.Count - 1; i++)
+            {
+                double aux = (imagenes[i + 1] - imagenes[i]) / (xs[i + contadorF] - xs[i]);
+                f.Add(aux);
+
+            }
+            fs.Add(f);
+            contadorF++;
+            if (imagenes.Count > 1)
+                calcularF(f, contadorF);
+            
+        }
+    }
 
 }

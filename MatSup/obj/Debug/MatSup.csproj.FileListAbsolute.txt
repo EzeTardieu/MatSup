@@ -64,3 +64,4 @@ C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.exe
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.pdb
 C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.PasosLagrange.resources
+C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.csprojAssemblyReference.cache
