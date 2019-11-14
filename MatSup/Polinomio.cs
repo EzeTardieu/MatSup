@@ -8,25 +8,25 @@ namespace MatSup
 {
 	public class Polinomio
 	{
-		public List<double> coeficientes = new List<double>();
+		public List<float> coeficientes = new List<float>();
 
 		public Polinomio()
         {
             
         }
 
-		public Polinomio(List<double> valores) {
+		public Polinomio(List<float> valores) {
 			for (int i = 0; i < valores.Count; i++)
 			{
-				coeficientes.Add(valores[i]);
+				this.AgregarCoeficiente(valores[i]);
 			}
 		}
 
 		public Polinomio Multiplicar(Polinomio polinomio){
-			List<double> coeficientes1 = coeficientes;
-			List<double> coeficientes2 = polinomio.GetCoeficientes();
+			List<float> coeficientes1 = coeficientes;
+			List<float> coeficientes2 = polinomio.GetCoeficientes();
 
-			List<double> coeficientesProducto = new List<double>();
+			List<float> coeficientesProducto = new List<float>();
 
 			for (int i = 0; i < Grado() + polinomio.Grado() - 1; i++)
 				coeficientesProducto.Add(0);
@@ -43,11 +43,11 @@ namespace MatSup
 			return new Polinomio(coeficientesProducto);
 		}
 
-		public Polinomio DividirEscalar(double denominador) {
+		public Polinomio DividirEscalar(float denominador) {
 			return new Polinomio(coeficientes.ConvertAll(numerador => numerador / denominador));
 		}
 
-		public Polinomio MultiplicarEscalar(double escalar)
+		public Polinomio MultiplicarEscalar(float escalar)
 		{
 			return new Polinomio(coeficientes.ConvertAll(numerador => numerador * escalar));
 		}
@@ -70,7 +70,7 @@ namespace MatSup
             return resultado;
         }
 
-        public List<double> GetCoeficientes(){
+        public List<float> GetCoeficientes(){
 			return coeficientes;
 		}
 
@@ -82,7 +82,8 @@ namespace MatSup
                     formateado += coeficientes[i];
                     if (i != 0)
                         formateado += "X^" + i;
-                    if (i != coeficientes.Count - 1)
+
+                    if (i != coeficientes.Count - 1 && coeficientes[i+1]!=0)
                         formateado += " + ";
                 }
 					
@@ -90,8 +91,9 @@ namespace MatSup
 			return formateado;
 		}
 
-		public void AgregarCoeficiente(double nuevoCoeficiente) {
-			coeficientes.Add(nuevoCoeficiente);
+        public void AgregarCoeficiente(float nuevoCoeficiente) {
+            coeficientes.Add(nuevoCoeficiente);
+
 		}
 
 		public int Grado() {// cuenta los cero, no funciona
@@ -107,12 +109,12 @@ namespace MatSup
             }
             return 0;
         }
-        public double Evaluar(double k)
+        public float Evaluar(float k)
         {
-            double resultado = 0;
+            float resultado = 0;
             for(int i = 0; i < coeficientes.Count; i++)
             {
-                resultado += coeficientes[i] * (Math.Pow(k, i));
+                resultado += coeficientes[i] * ((float)Math.Pow(k, i));
                 
             }
             return resultado;

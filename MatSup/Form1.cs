@@ -112,8 +112,8 @@ namespace MatSup
             else
             {
                 polInterpolante = interpolador.obtenerPolinomioInterpolador();
-				ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
-				if (mostrarPasosBox.Checked) CargarPasos();
+                ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
+                if (mostrarPasosBox.Checked) CargarPasos();
 				ContainerGrado.Text = polInterpolante.getGrado().ToString();
 				ContainerEquiespaciados.Text = interpolador.Equiespaciados();
             }
@@ -121,21 +121,35 @@ namespace MatSup
         }
 		public void CargarPasos()
 		{
-			ContainerPasos.Clear();
-			foreach (var paso in interpolador.metodo.obtenerPasos())
+            ContainerPasos.Text = "";
+            foreach (var paso in interpolador.metodo.obtenerPasos())
 				ContainerPasos.Text += paso + Environment.NewLine;
 		}
 
 		private void ValorAEspecializar_TextChanged(object sender, EventArgs e)
 		{
-			if (Entrada_valida(ValorAEspecializar.Text)) {
-				PolinomioEspecializado.Text = "P(" + ValorAEspecializar.Text + ") =" +
-				polInterpolante.Evaluar(double.Parse(ValorAEspecializar.Text)).ToString();
-			}
+			if (Entrada_valida(ValorAEspecializar.Text))
+            {
+                if(polInterpolante != null)
+                {
+                     PolinomioEspecializado.Text = "P(" + ValorAEspecializar.Text + ") =" +
+                     polInterpolante.Evaluar(float.Parse(ValorAEspecializar.Text)).ToString();
+
+                }
+                else
+                {
+                     MessageBox.Show("Error: Polinomio interpolante debe ser calculado previamente", "Error al especializar", MessageBoxButtons.OK);
+                }
+                
+            }
+            else
+            MessageBox.Show("Error: caracter inválido","Error al especializar",MessageBoxButtons.OK);
+                
+			
 		}
 
 		public bool Entrada_valida(String text) {
-			return text.Length > 0;
+			return text.Length > 0 && text.All(c=>char.IsNumber(c)||c == ','||c=='-');
 		}
 	}
 }

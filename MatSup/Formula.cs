@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MatSup {
 	public interface Formula {
-		Polinomio retornarPolinomio (List<List<double>> fs, List<double> xs);
+		Polinomio retornarPolinomio (List<List<float>> fs, List<float> xs);
 		List<String> obtenerPasos();
 	}
 
 	public class Regresivo : Formula {
 
 		List<String> pasos = new List<String>();
-        public Polinomio retornarPolinomio(List<List<double>> fs, List<double> xs)
+        public Polinomio retornarPolinomio(List<List<float>> fs, List<float> xs)
         {
 			foreach(var f in fs) f.Reverse();
             xs.Reverse();
@@ -48,7 +48,7 @@ namespace MatSup {
 	public class Progresivo : Formula {
 
 		List<String> pasos = new List<String>();
-		public Polinomio retornarPolinomio (List<List<double>> fs, List<double> xs) {
+		public Polinomio retornarPolinomio (List<List<float>> fs, List<float> xs) {
 			String polinomioSinResolver = "P(x)=";
 			Polinomio polInterpolante = new Polinomio();
 			for (int j = 0; j < fs.Count - 1; j++)
@@ -64,7 +64,7 @@ namespace MatSup {
 					polinomioSinResolver += "(x-" + xs[i] + ")";
 					termino = termino.Multiplicar(aux);
 				}
-				if (j != fs.Count - 1) polinomioSinResolver += "+";
+				if (j != fs.Count - 1 ) polinomioSinResolver += "+";
 				termino = termino.MultiplicarEscalar(fs[j].First());
 				polInterpolante = polInterpolante.Sumar(termino);
 				pasos.Add(polinomioSinResolver);

@@ -8,7 +8,7 @@ namespace MatSup
 {
     public interface Metodo
 	{
-		Polinomio aplicar(Dictionary<double, double> tablaValores);
+		Polinomio aplicar(Dictionary<float, float> tablaValores);
 		List<String> obtenerPasos();
 	}
 
@@ -16,9 +16,9 @@ namespace MatSup
 	{
         public static List<Polinomio> ls;
 		List<String> pasos = new List<string>();
-        List<double> xs;
-        List<double> ys;
-        public Polinomio aplicar(Dictionary<double, double> tablaValores)
+        List<float> xs;
+        List<float> ys;
+        public Polinomio aplicar(Dictionary<float, float> tablaValores)
 		{
             reset();
             int grado = tablaValores.Count() - 1;
@@ -38,12 +38,12 @@ namespace MatSup
                 pol.coeficientes.Add(1);
                 foreach (var raizNew in xsNew)
                 {
-                    List<double> coefAux = new List<double>();
+                    List<float> coefAux = new List<float>();
                     coefAux.Add(-raizNew);
                     coefAux.Add(1);
                     pol = pol.Multiplicar(new Polinomio(coefAux));
                 }
-                double denominador = 1;
+                float denominador = 1;
                 foreach (var raizNew in xsNew)
                 {
                     denominador *= (xs.First(x => x == raiz) - raizNew);
@@ -58,12 +58,19 @@ namespace MatSup
             Polinomio polInterpolante = new Polinomio();
 
 			pasos.Add("Calcular el polinomio interpolante");
+            
             foreach (var imagen in ys)
             {
                 Polinomio polAux = ls[y].MultiplicarEscalar(imagen);
                 polInterpolante = polInterpolante.Sumar(polAux);
                 y++;
             }
+            
+            for(int b = 0; b < polInterpolante.coeficientes.Count; b++)
+            {
+                polInterpolante.coeficientes[b] = (float) Math.Truncate(polInterpolante.coeficientes[b] * 10000) / 10000;
+            }
+            
 			pasos.Add("P(X)=" + polInterpolante.Formatear());
             return polInterpolante;
         }
@@ -84,25 +91,29 @@ namespace MatSup
 	{
 		Formula formula;
 		List<String> pasos = new List<string>();
-		List<double> xs;
-        List<double> ys;
-        List<List<double>>fs; 
+		List<float> xs;
+        List<float> ys;
+        List<List<float>>fs; 
         public NewtonGregory(Formula _formula) {
 			formula = _formula;
 		}
 
-		public Polinomio aplicar(Dictionary<double, double> tablaValores)
+		public Polinomio aplicar(Dictionary<float, float> tablaValores)
 		{
             xs = tablaValores.Keys.ToList();
             ys = tablaValores.Values.ToList();
-            fs = new List<List<double>>();
+            fs = new List<List<float>>();
             int contadorf = 1;
             fs.Add(ys);
             calcularF(ys, contadorf);
             Polinomio polInter= formula.retornarPolinomio(fs,xs);
 			pasos.Add("Armamos el polinomio interpolante: ");
 			pasos.AddRange(formula.obtenerPasos());
-			pasos.Add("P(x) = " + polInter.Formatear());
+            for (int b = 0; b < polInter.coeficientes.Count; b++)
+            {
+                polInter.coeficientes[b] = (float)Math.Truncate(polInter.coeficientes[b] * 10000) / 10000;
+            }
+            pasos.Add("P(x) = " + polInter.Formatear());
             return polInter;
 
 		}
@@ -116,19 +127,19 @@ namespace MatSup
             xs = null;
             ys = null;
         }
-        private void calcularF(List<double> imagenes, int contadorF)
+        private void calcularF(List<float> imagenes, int contadorF)
         {
-            List<double> f = new List<double>();
+            List<float> f = new List<float>();
 			pasos.Add("Calculamos las diferencias progresivas de orden " + contadorF);
             for (int i = 0; i < imagenes.Count - 1; i++)
             {
-                double aux = (imagenes[i + 1] - imagenes[i]) / (xs[i + contadorF] - xs[i]);
+                float aux = (imagenes[i + 1] - imagenes[i]) / (xs[i + contadorF] - xs[i]);
                 f.Add(aux);
 				pasos.Add("ΔF" + contadorF +"(" + imagenes[i] + ") = " + aux);
             }
             fs.Add(f);
             contadorF++;
-            if (imagenes.Count > 1)
+            if (f.Count > 1)
                 calcularF(f, contadorF);
             
         }

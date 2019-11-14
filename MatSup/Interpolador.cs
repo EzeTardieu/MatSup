@@ -9,7 +9,7 @@ namespace MatSup
 {
 	public class Interpolador
 	{
-		public static Dictionary<double, double> tablaPuntos = new Dictionary<double, double>();
+		public static Dictionary<float, float> tablaPuntos = new Dictionary<float, float>();
 		public Metodo metodo;
 
 		public Interpolador() { }
@@ -28,7 +28,7 @@ namespace MatSup
         public string Equiespaciados()
         {
             String respuesta = "No";
-            List<double> listaOrdenada = tablaPuntos.Keys.ToList().OrderBy(i => i).ToList();
+            List<float> listaOrdenada = tablaPuntos.Keys.ToList().OrderBy(i => i).ToList();
             for(int i = 0; i < tablaPuntos.Count()-2; i++)
             {
 				if (listaOrdenada[i + 1] - listaOrdenada[i] == listaOrdenada[i + 2] - listaOrdenada[i + 1])
