@@ -68,7 +68,8 @@ namespace MatSup
            
             for(int b = 0; b < polInterpolante.coeficientes.Count; b++)
             {
-                polInterpolante.coeficientes[b] = (float) Math.Truncate(polInterpolante.coeficientes[b] * 10000) / 10000;
+                //polInterpolante.coeficientes[b] = (float) Math.Truncate(polInterpolante.coeficientes[b] * 10000) / 10000;
+                polInterpolante.coeficientes[b] = (float)Math.Round(polInterpolante.coeficientes[b], 4);
             }
             
 			pasos.Add("P(X)=" + polInterpolante.Formatear());
@@ -100,6 +101,7 @@ namespace MatSup
 
 		public Polinomio aplicar(Dictionary<float, float> tablaValores)
 		{
+            
             xs = tablaValores.Keys.ToList();
             ys = tablaValores.Values.ToList();
             fs = new List<List<float>>();
@@ -112,7 +114,8 @@ namespace MatSup
             
             for (int b = 0; b < polInter.coeficientes.Count; b++)
             {
-                polInter.coeficientes[b] = (float)Math.Truncate(polInter.coeficientes[b] * 10000) / 10000;
+                //polInter.coeficientes[b] = (float)Math.Truncate(polInter.coeficientes[b] * 10000) / 10000;
+                polInter.coeficientes[b] = (float)Math.Round(polInter.coeficientes[b], 4);
             }
             pasos.Add("P(x) = " + polInter.Formatear());
             return polInter;

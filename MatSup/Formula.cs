@@ -19,23 +19,27 @@ namespace MatSup {
             xs.Reverse();
 			String polinomioSinResolver = "P(x)=";
             Polinomio polInterpolante = new Polinomio();
-            for (int j = 0; j < fs.Count - 1; j++)
+            for (int j = 0; j < fs.Count ; j++)
             {
-                Polinomio termino = new Polinomio();
-                termino.AgregarCoeficiente(1);
-				polinomioSinResolver += fs[j].First().ToString();
-                for (int i = 0; i < j; i++)
+                if(fs[j].Count != 0)//rompe cuando solo es un punto sin este if
                 {
-                    Polinomio aux = new Polinomio();
-                    aux.AgregarCoeficiente(-xs[i]);
-                    aux.AgregarCoeficiente(1);
-					polinomioSinResolver += "(x-" + xs[i] + ")";
-					termino = termino.Multiplicar(aux);
+                    Polinomio termino = new Polinomio();
+                    termino.AgregarCoeficiente(1);
+                    polinomioSinResolver += fs[j].First().ToString();
+                    for (int i = 0; i < j; i++)
+                    {
+                        Polinomio aux = new Polinomio();
+                        aux.AgregarCoeficiente(-xs[i]);
+                        aux.AgregarCoeficiente(1);
+                        polinomioSinResolver += "(x-" + xs[i] + ")";
+                        termino = termino.Multiplicar(aux);
+                    }
+                    if (j != fs.Count - 1 && fs[j+1].First()!=0) polinomioSinResolver += "+";
+                    termino = termino.MultiplicarEscalar(fs[j].First());
+                    polInterpolante = polInterpolante.Sumar(termino);
+                    pasos.Add(polinomioSinResolver);
                 }
-				if(j!=fs.Count - 1) polinomioSinResolver += "+";
-				termino = termino.MultiplicarEscalar(fs[j].First());
-                polInterpolante = polInterpolante.Sumar(termino);
-				pasos.Add(polinomioSinResolver);
+               
             }
             return polInterpolante;
         }
@@ -51,23 +55,28 @@ namespace MatSup {
 		public Polinomio retornarPolinomio (List<List<float>> fs, List<float> xs) {
 			String polinomioSinResolver = "P(x)=";
 			Polinomio polInterpolante = new Polinomio();
-			for (int j = 0; j < fs.Count - 1; j++)
+			for (int j = 0; j < fs.Count ; j++)
 			{
-				Polinomio termino = new Polinomio();
-				termino.AgregarCoeficiente(1);
-				polinomioSinResolver += fs[j].First().ToString();
-				for (int i = 0; i < j; i++)
-				{
-					Polinomio aux = new Polinomio();
-					aux.AgregarCoeficiente(-xs[i]);
-					aux.AgregarCoeficiente(1);
-					polinomioSinResolver += "(x-" + xs[i] + ")";
-					termino = termino.Multiplicar(aux);
-				}
-				if (j != fs.Count - 1 ) polinomioSinResolver += "+";
-				termino = termino.MultiplicarEscalar(fs[j].First());
-				polInterpolante = polInterpolante.Sumar(termino);
-				pasos.Add(polinomioSinResolver);
+                if (fs[j].Count != 0)//sin este if rompe al tener solo un punto
+                {
+                    Polinomio termino = new Polinomio();
+                    termino.AgregarCoeficiente(1);
+
+                    polinomioSinResolver += fs[j].First().ToString();
+                    for (int i = 0; i < j; i++)
+                    {
+                        Polinomio aux = new Polinomio();
+                        aux.AgregarCoeficiente(-xs[i]);
+                        aux.AgregarCoeficiente(1);
+                        polinomioSinResolver += "(x-" + xs[i] + ")";
+                        termino = termino.Multiplicar(aux);
+                    }
+                    if (j != fs.Count - 1) polinomioSinResolver += "+";
+                    termino = termino.MultiplicarEscalar(fs[j].First());
+                    polInterpolante = polInterpolante.Sumar(termino);
+                    pasos.Add(polinomioSinResolver);
+                }
+                  
 			}
 			return polInterpolante;
 		}

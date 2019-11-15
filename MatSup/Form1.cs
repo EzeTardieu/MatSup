@@ -130,32 +130,52 @@ namespace MatSup
                     interpolador.setMetodo(new NewtonGregory(new Regresivo()));
                     break;
             }
+            polinomioCalculado = false;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if(!polinomioCalculado){
-                if (metodos.Text == "")
-                    MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
+            if (interpolador.tablaPuntosVacia())
+            {
+              
+               
+                MessageBox.Show("Error: Debe agregar al menos un punto para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (!polinomioCalculado)
+                {
+                   
+                    if (metodos.Text == "")
+                        MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
+                    else
+                    {
+                        polInterpolante = interpolador.obtenerPolinomioInterpolador();
+                        ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
+                        if (mostrarPasosBox.Checked) CargarPasos();
+                        ContainerGrado.Text = polInterpolante.getGrado().ToString();
+                        ContainerEquiespaciados.Text = interpolador.Equiespaciados();
+                        polinomioCalculado = true;
+                    }
+                }
                 else
                 {
-                    polInterpolante = interpolador.obtenerPolinomioInterpolador();
-                    ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
-                    if (mostrarPasosBox.Checked) CargarPasos();
-                    ContainerGrado.Text = polInterpolante.getGrado().ToString();
-                    ContainerEquiespaciados.Text = interpolador.Equiespaciados();
-                    polinomioCalculado = true;
+                    if (interpolador.necesitaRecalcular(polInterpolante))
+                    {
+                        ContainerPasos.Text += "El polinomio interpolante no es el mismo calculado anteriormente, se va a recalcultar..." + Environment.NewLine;
+                        polinomioCalculado = false;
+                        Button1_Click(sender, e);
+                    }
+                    else
+                    {
+                        
+                        
+                       
+                        ContainerPasos.Text += "El polinomio interpolante se mantiene igual con los nuevos puntos, no se necesita recalcular" + Environment.NewLine;
+                    }
                 }
             }
-            else{
-                if(interpolador.necesitaRecalcular(polInterpolante)){
-                    ContainerPasos.Text += "El polinomio interpolante no es el mismo calculado anteriormente, se va a recalcultar..."+Environment.NewLine;
-                    polinomioCalculado = false;
-                    Button1_Click(sender,e);
-                } else{
-                    ContainerPasos.Text += "El polinomio interpolante se mantiene igual con los nuevos puntos, no se necesita recalcular" + Environment.NewLine;
-                }
-            }
+            
             
           
         }
@@ -166,30 +186,37 @@ namespace MatSup
 				ContainerPasos.Text += paso + Environment.NewLine;
 		}
 
-		private void ValorAEspecializar_TextChanged(object sender, EventArgs e)
+		private void ValorAEspecializar_TextChanged(object sender, KeyEventArgs e)
 		{
-			if (Entrada_valida(ValorAEspecializar.Text))
+            if (e.KeyCode == Keys.Enter)
             {
-                if(polInterpolante != null)
+                try
                 {
-                     PolinomioEspecializado.Text = "P(" + ValorAEspecializar.Text + ") =" +
-                     polInterpolante.Evaluar(float.Parse(ValorAEspecializar.Text)).ToString();
+                    if (polInterpolante != null)
+                    {
+                        PolinomioEspecializado.Text = "P(" + ValorAEspecializar.Text + ") =" +
+                        polInterpolante.Evaluar(float.Parse(ValorAEspecializar.Text)).ToString();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Polinomio interpolante debe ser calculado previamente", "Error al especializar", MessageBoxButtons.OK);
+                    }
+                }
+
+
+
+                catch
+                {
+                    MessageBox.Show("Error: entrada inválida", "Error al especializar", MessageBoxButtons.OK);
 
                 }
-                else
-                {
-                     MessageBox.Show("Error: Polinomio interpolante debe ser calculado previamente", "Error al especializar", MessageBoxButtons.OK);
-                }
-                
+
+
             }
-            else
-            MessageBox.Show("Error: caracter inválido","Error al especializar",MessageBoxButtons.OK);
-                
+        }
 			
-		}
 
-		public bool Entrada_valida(String text) {
-			return text.Length > 0 && text.All(c=>char.IsNumber(c)||c == ','||c=='-');
-		}
+		
 	}
 }

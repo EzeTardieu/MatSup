@@ -84,7 +84,8 @@ namespace MatSup
                         formateado += "X^" + i;
 
                     if (i != coeficientes.Count - 1 && coeficientes[i+1]!=0)
-                        formateado += " + ";
+						formateado += (coeficientes[i+1] >= 0) ? "+" : "";
+                        
                 }
 					
 			}

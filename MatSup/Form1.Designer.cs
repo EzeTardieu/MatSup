@@ -1,4 +1,6 @@
-﻿namespace MatSup
+﻿using System.Windows.Forms;
+
+namespace MatSup
 {
     partial class Form1
     {
@@ -335,7 +337,7 @@
             this.ValorAEspecializar.Name = "ValorAEspecializar";
             this.ValorAEspecializar.Size = new System.Drawing.Size(37, 20);
             this.ValorAEspecializar.TabIndex = 16;
-            this.ValorAEspecializar.TextChanged += new System.EventHandler(this.ValorAEspecializar_TextChanged);
+            this.ValorAEspecializar.KeyDown += new KeyEventHandler(this.ValorAEspecializar_TextChanged);
             // 
             // label9
             // 

@@ -29,12 +29,22 @@ namespace MatSup
         {
             return tablaPuntos.ContainsKey(x);
         }
+        public bool tablaPuntosVacia()
+        {
+            return tablaPuntos.Count<1;
+        }
         public bool necesitaRecalcular(Polinomio polInterpolante){
             bool respuesta = false;
+            if (polInterpolante.getGrado() >= tablaPuntos.Count)
+            {
+                return true;
+            }
+            
             foreach(var par in tablaPuntos){
                 float key = par.Key;
                 float value = par.Value;
                 respuesta = polInterpolante.Evaluar(key) != value;
+                if (respuesta == true) return respuesta;
             }
             return respuesta;
         }

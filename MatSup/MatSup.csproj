@@ -91,5 +91,8 @@
   <ItemGroup>
     <None Include="Media\finter.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
