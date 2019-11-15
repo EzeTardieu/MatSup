@@ -21,13 +21,30 @@ namespace MatSup
 		public void agregarPunto(float x, float y) {
 			tablaPuntos.Add(x, y);
 		}
+        public void sacarPunto(float x)
+        {
+            tablaPuntos.Remove(x);
+        }
+        public bool tienePunto(float x)
+        {
+            return tablaPuntos.ContainsKey(x);
+        }
+        public bool necesitaRecalcular(Polinomio polInterpolante){
+            bool respuesta = false;
+            foreach(var par in tablaPuntos){
+                float key = par.Key;
+                float value = par.Value;
+                respuesta = polInterpolante.Evaluar(key) != value;
+            }
+            return respuesta;
+        }
 
 		public Polinomio obtenerPolinomioInterpolador() {
             return metodo.aplicar(tablaPuntos);
 		}
         public string Equiespaciados()
         {
-            String respuesta = "No";
+            String respuesta = "Si";
             List<float> listaOrdenada = tablaPuntos.Keys.ToList().OrderBy(i => i).ToList();
             for(int i = 0; i < tablaPuntos.Count()-2; i++)
             {

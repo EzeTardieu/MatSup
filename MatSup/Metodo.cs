@@ -65,7 +65,7 @@ namespace MatSup
                 polInterpolante = polInterpolante.Sumar(polAux);
                 y++;
             }
-            
+           
             for(int b = 0; b < polInterpolante.coeficientes.Count; b++)
             {
                 polInterpolante.coeficientes[b] = (float) Math.Truncate(polInterpolante.coeficientes[b] * 10000) / 10000;
@@ -109,6 +109,7 @@ namespace MatSup
             Polinomio polInter= formula.retornarPolinomio(fs,xs);
 			pasos.Add("Armamos el polinomio interpolante: ");
 			pasos.AddRange(formula.obtenerPasos());
+            
             for (int b = 0; b < polInter.coeficientes.Count; b++)
             {
                 polInter.coeficientes[b] = (float)Math.Truncate(polInter.coeficientes[b] * 10000) / 10000;

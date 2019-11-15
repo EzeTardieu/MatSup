@@ -96,6 +96,7 @@ namespace MatSup
 
 		}
 
+
 		public int Grado() {// cuenta los cero, no funciona
 			return coeficientes.Count;
 		}

@@ -15,6 +15,7 @@ namespace MatSup
         int indiceTablaPuntos = 1;
         Interpolador interpolador = new Interpolador();
 		Polinomio polInterpolante;
+        bool polinomioCalculado = false;
 
 		public Form1()
         {
@@ -46,14 +47,40 @@ namespace MatSup
             {
                 try
                 {
+                    
                     x = float.Parse(puntoX.Text);
                     y = float.Parse(puntoY.Text);
-                    tablaPuntos.Controls.Add(new Label { Text = puntoX.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 0, indiceTablaPuntos);
-                    tablaPuntos.Controls.Add(new Label { Text = puntoY.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 1, indiceTablaPuntos);
-                    indiceTablaPuntos++;
-                    puntoX.Text = "";
-                    puntoY.Text = "";
-                    interpolador.agregarPunto(x, y);
+                    if (!interpolador.tienePunto(x))
+                    {
+                        Button boton = new Button { Name = indiceTablaPuntos.ToString(), Text = "x", Anchor = AnchorStyles.Top, Height = 25, AutoSize = true, BackColor = Color.Red };
+
+
+                        boton.Click += (senderxd, args) =>
+                        {
+                            int i;
+                            interpolador.sacarPunto(int.Parse(tablaPuntos.GetControlFromPosition(0, int.Parse((senderxd as Button).Name)).Text));
+                            for (i = 0; i < tablaPuntos.ColumnCount; i++)
+                            {
+                                Control c = tablaPuntos.GetControlFromPosition(i, int.Parse((senderxd as Button).Name));
+                                tablaPuntos.Controls.Remove(c);
+                            }
+                            tablaPuntos.RowStyles.RemoveAt(int.Parse((senderxd as Button).Name));
+
+
+
+                        };
+                        tablaPuntos.Controls.Add(new Label { Text = puntoX.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 0, indiceTablaPuntos);
+                        tablaPuntos.Controls.Add(new Label { Text = puntoY.Text, Anchor = AnchorStyles.Left, AutoSize = true }, 1, indiceTablaPuntos);
+                        tablaPuntos.Controls.Add(boton, 2, indiceTablaPuntos);
+                        indiceTablaPuntos++;
+                        puntoX.Text = "";
+                        puntoY.Text = "";
+                        interpolador.agregarPunto(x, y);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Punto x ya existe en la tabla", "Error al agregar punto", MessageBoxButtons.OK);
+                    }
                 }
                 catch
                 {
@@ -107,16 +134,29 @@ namespace MatSup
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if(metodos.Text=="")
-                MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
-            else
-            {
-                polInterpolante = interpolador.obtenerPolinomioInterpolador();
-                ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
-                if (mostrarPasosBox.Checked) CargarPasos();
-				ContainerGrado.Text = polInterpolante.getGrado().ToString();
-				ContainerEquiespaciados.Text = interpolador.Equiespaciados();
+            if(!polinomioCalculado){
+                if (metodos.Text == "")
+                    MessageBox.Show("Error: Debe seleccionar un método para continuar", "Error al calcular polinomio interpolante", MessageBoxButtons.OK);
+                else
+                {
+                    polInterpolante = interpolador.obtenerPolinomioInterpolador();
+                    ContainerPolinomioInterpolante.Text = polInterpolante.Formatear();
+                    if (mostrarPasosBox.Checked) CargarPasos();
+                    ContainerGrado.Text = polInterpolante.getGrado().ToString();
+                    ContainerEquiespaciados.Text = interpolador.Equiespaciados();
+                    polinomioCalculado = true;
+                }
             }
+            else{
+                if(interpolador.necesitaRecalcular(polInterpolante)){
+                    ContainerPasos.Text += "El polinomio interpolante no es el mismo calculado anteriormente, se va a recalcultar..."+Environment.NewLine;
+                    polinomioCalculado = false;
+                    Button1_Click(sender,e);
+                } else{
+                    ContainerPasos.Text += "El polinomio interpolante se mantiene igual con los nuevos puntos, no se necesita recalcular" + Environment.NewLine;
+                }
+            }
+            
           
         }
 		public void CargarPasos()
