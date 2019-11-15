@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MatSup.exe" version="1.0.0.0" publicKeyToken="25a3d3a2ca3ddf54" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MatSup" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MatSup.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opciones del manifiesto de Control de cuentas de usuario
+          Si quiere cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
+          nodo requestedExecutionLevel por alguno de los siguientes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si desea usar la virtualización de archivos y del Registro para la
+         compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MatSup.exe" size="60912">
+      <assemblyIdentity name="MatSup" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>m03iGbjgM3KwunG06V8lZ9h5EwQAbNCmol+eEMpuZR4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MatSup.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-STPMMVM\Ezequiel" issuerKeyHash="aa425bc94e5c2516f13c6285e3c01d82e7c2195a" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>8gHPdbePS5z2tMB/VixfF8J9Vmo91d8w+N41T+8dpuo=</DigestValue></Reference></SignedInfo><SignatureValue>Uc908fNumxpoDUXv0examp2BTO4+7lNtk3Og59/yPEzDBpOBEi4zD2YF9sqPKRJxA4M88dj/zh8obydZwkr/FuzpHT7UoawoXLb0bYG8PpWzEbwLfyY2kKyVbjNRzOA3iG+B7RyOpxoPS3RVADL1hjUnGphfunh9DllDet0BiFE=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>wxFq/37tXu9ropfYoInuE7cGYCiTfPT64cqtg8rGOS+8UQ+gpF1U+XpQWniliyy+mLrQscXNRaSoCnPUWs0tmgWOpDYd6WThZR1kNa892rKJOGyKNvkAILS+BQOY4WykCqSXBU3pfunACSZ6hTtx1mQVoSPhz0WF9GWl/HSkjek=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="eaa61def4f35def830dfd53d6a567dc2175f2c567fc0b4f69c4b8fb775cf01f2" Description="" Url=""><as:assemblyIdentity name="MatSup.exe" version="1.0.0.0" publicKeyToken="25a3d3a2ca3ddf54" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-STPMMVM\Ezequiel</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>eIrlVp/RJBBMWHeOTz5R7VUyzBgN/U4uuprEyLuX0kY=</DigestValue></Reference></SignedInfo><SignatureValue>O09WQqkLy1df1IbuLmQ1KjWzWweFgNiu1+/GSqcp13jr12QeaJVz4IKhfXO5IRg3sUA6k0PKeCvrdCSZ5RUueRVpWZ2MdthpfEZrH8EOtolex+OjNbHyMEvZ+HWwhZ4OHOe5X6gHkP+Y4vXRGqM4RK/pvTq7awrfgeZM5nI5nYw=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wxFq/37tXu9ropfYoInuE7cGYCiTfPT64cqtg8rGOS+8UQ+gpF1U+XpQWniliyy+mLrQscXNRaSoCnPUWs0tmgWOpDYd6WThZR1kNa892rKJOGyKNvkAILS+BQOY4WykCqSXBU3pfunACSZ6hTtx1mQVoSPhz0WF9GWl/HSkjek=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB+TCCAWKgAwIBAgIQS9NunslPzqNH/Ug7XkC8PzANBgkqhkiG9w0BAQsFADA7MTkwNwYDVQQDHjAARABFAFMASwBUAE8AUAAtAFMAVABQAE0ATQBWAE0AXABFAHoAZQBxAHUAaQBlAGwwHhcNMTkxMTE1MTg1MTAyWhcNMjAxMTE1MDA1MTAyWjA7MTkwNwYDVQQDHjAARABFAFMASwBUAE8AUAAtAFMAVABQAE0ATQBWAE0AXABFAHoAZQBxAHUAaQBlAGwwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMMRav9+7V7va6KX2KCJ7hO3BmAok3z0+uHKrYPKxjkvvFEPoKRdVPl6UFp4pYssvpi60LHFzUWkqApz1FrNLZoFjqQ2Helk4WUdZDWvPdqyiThsijb5ACC0vgUDmOFspAqklwVN6X7pwAkmeoU7cdZkFaEj4c9FhfRlpfx0pI3pAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAJhwXTTL0ouu+IZaM90sbCWzkpR/Qj6zdlFxiSJnqSUj7NAM87GKsZGgSSplRrRNzabhvvnl94BglCI/4mu+PgicKfQSdoSUREXI52MTf8puZQD9fHEuqq7HwyfaT4RHghX3vBMNbh540UN2cGwQQR85Pfa+F0ISU/T+iTszwfak=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
