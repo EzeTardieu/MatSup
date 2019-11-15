@@ -57,3 +57,7 @@ C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.csproj.
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.exe
 C:\Users\nicog\OneDrive\Desktop\UTN 3\SUP\MatSup\MatSup\obj\Debug\MatSup.pdb
 C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.csprojAssemblyReference.cache
+C:\Users\Ezequiel\Documents\MatSup\MatSup\bin\Debug\MatSup.exe.manifest
+C:\Users\Ezequiel\Documents\MatSup\MatSup\bin\Debug\MatSup.application
+C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.exe.manifest
+C:\Users\Ezequiel\Documents\MatSup\MatSup\obj\Debug\MatSup.application
